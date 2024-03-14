@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+>
+
+    <Dialog id="idDialog" 
+            title="이름을 팝업으로 보여주는 Dialog">
+        <buttons>
+            <Button text="닫기" press=".onDialogClose" />
+        </buttons>
+        <content>
+            <l:VerticalLayout>
+                <Text text="View의 모델에서 가져온 정보: {/name}" />
+                <Text id="idNameText" text="컨트롤러에서 설정함" />
+                <core:Fragment id="frag4" fragmentName="sync.e08.exercise8.view.InputFrag" type="XML" />
+            </l:VerticalLayout>
+            <!-- <core:Fragment id="frag3" fragmentName="sync.e08.exercise8.view.InputFrag" type="XML" /> -->
+        </content>
+    </Dialog>
+
+</core:FragmentDefinition>

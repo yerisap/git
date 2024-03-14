@@ -1,0 +1,43 @@
+<mvc:View controllerName="sync.e08.exercise10.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <!-- height="50%" 는 화면 높이의 50% 차지 -->
+            <Carousel pages="{/ConnectionSet}" height="50%" >
+                <pages>
+                    <Page>
+                        <content>
+                            <!-- 항공편 정보를 sap.ui.layout.SimpleForm으로 출려 -->
+                            <f:SimpleForm>
+                                <Label text="Carrier" />
+                                <Text text="{Carrid}" />
+
+                                <Label text="Flight number" />
+                                <Text text="{Connid}" />
+
+                                <Label text="Departure" />
+                                <Text text="{Cityfrom}" />
+
+                                <Label text="Destination" />
+                                <Text text="{Cityto}" />
+
+                            </f:SimpleForm>
+                        </content>
+                    </Page>
+                </pages>
+            </Carousel>
+                <List items="{/ConnectionSet}">
+                    <items>
+                        <!-- 이 구역은 ConnectionSet의 라인 수 만큼 반복된다 -->
+                        <StandardListItem 
+                            title="항공사 {Carrid}, 항공편 {Connid}"
+                            description="출발도시: {Cityfrom} / 도착도시: {Cityto}"
+                        />
+                    </items>
+                </List>
+        </content>
+    </Page>
+</mvc:View> 
