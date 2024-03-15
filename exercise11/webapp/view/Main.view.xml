@@ -6,7 +6,12 @@
             <!-- 항공사 리스트를 위한 Panel -->
             <Panel headerText="Carriers" expandable="true" expanded="true" height="200px">
                 <Table 
-                    items="{/CarrierSet}"
+                    items="{
+                        path: '/CarrierSet',
+                        parameters: {
+                            expand: 'toConnection'
+                        }
+                    }"
                     mode="SingleSelectLeft"
                     selectionChange=".onSelectionChange"
                 >
@@ -29,6 +34,7 @@
                     </items>
                 </Table>
             </Panel>
+            
             <!-- 항공편 리스트를 위한 Panel -->
             <Panel headerText="Flight Connections" expandable="true" expand="true" height="100%">
                 <content>
@@ -44,7 +50,7 @@
                             <ColumnListItem >
                                 <cells>
                                     <Text text="{Connid}"/>
-                                    <Text text="{Cityfrom}"/>
+                                     <Text text="{Cityfrom}"/>
                                     <Text text="{Cityto}"/>
                                 </cells>
                             </ColumnListItem>
