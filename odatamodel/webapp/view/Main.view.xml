@@ -1,0 +1,56 @@
+<mvc:View controllerName="sync.e08.odatamodel.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table">
+    <Page id="page" title="{i18n>title}">
+        <footer>
+            <OverflowToolbar >
+                <ToolbarSpacer />
+                <Button  text="생성" press="onCreate" type="Accept" />
+            </OverflowToolbar>
+        </footer>
+        <content> 
+            <t:Table 
+                visibleRowCount="10"
+                rows="{/CarrierSet}"
+                enableBusyIndicator="true" >
+                
+                <t:columns>
+                    <t:Column > 
+                        <Label text="{i18n>labelCarrid}" /> 
+                            <t:template>
+                                <!-- <HBox> -->
+                                    <ObjectIdentifier title="{Carrid}" />
+                                    <!-- <ObjectAttribute  text="{Carrid}" />
+                                </HBox> -->
+                            </t:template>
+                    </t:Column>
+
+                    <t:Column > 
+                        <Label text="{i18n>labelCarrname}" /> 
+                            <t:template>
+                                <ObjectAttribute  text="{Carrname}" />
+                            </t:template>
+                    </t:Column>
+
+                    <t:Column > 
+                        <Label text="{i18n>labelCurrcode}" /> 
+                            <t:template>
+                                <ObjectAttribute  text="{Currcode}" />
+                            </t:template>
+                    </t:Column>
+                        
+                    <t:Column > 
+                        <Label text="{i18n>labelUrl}" /> 
+                            <t:template>
+                                <Link text="웹페이지 이동" href="{Url}" />
+                            </t:template>
+                    </t:Column>
+                </t:columns>
+                <t:noData>
+                    
+                </t:noData>
+            </t:Table>
+        </content>
+    </Page>
+</mvc:View>
