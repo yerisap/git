@@ -1,0 +1,62 @@
+<mvc:View controllerName="sync.e08.hw1review.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content> 
+            <Table id="idTable" 
+            items="{/ConnSet}" 
+            mode="SingleSelectMaster"
+            selectionChange="onSelectionChange"
+            >
+                <columns>
+                    <!-- <Column><Label text="항공사" /></Column> -->
+                    <Column>
+                        <Label text="{i18n>labelCarrid}" />
+                    </Column>
+                    
+                    <!-- <Column><Label text="항공편번호" /></Column> -->
+                    <Column>
+                        <Label text="{i18n>labelConnid}" />
+                    </Column>
+                    
+                    <!-- <Column><Label text="출발국가" /></Column> -->
+                    <Column>
+                        <Label text="{i18n>labelCountryfr}" />
+                    </Column>
+
+                    <!-- <Column><Label text="출발도시" /></Column> -->
+                    <Column>
+                        <Label text="{i18n>labelCityfrom}" />
+                    </Column>
+
+                    <!-- <Column><Label text="도착국가" /></Column> -->
+                    <Column>
+                        <Label text="{i18n>labelCountryto}" />
+                    </Column>
+
+                    <!-- <Column><Label text="도착도시" /></Column> -->
+                    <Column>
+                        <Label text="{i18n>labelCityto}" />
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem >
+                        <cells>
+<!-- 키 필드를 표현하기 위한 ObjectIdentifirer -->
+                            <ObjectIdentifier text="{Carrid}" />
+                            <ObjectIdentifier text="{Connid}" />
+
+                            <ObjectAttribute text="{Countryfr}" />
+                            <ObjectAttribute text="{Cityfrom}" />
+                            <ObjectAttribute text="{Countryto}" />
+                            <ObjectAttribute text="{Cityto}" />
+
+                        </cells>
+                    </ColumnListItem>
+                </items>
+
+            </Table>
+        </content>
+    </Page>
+</mvc:View>
