@@ -46,6 +46,12 @@
                                 <Link text="웹페이지 이동" href="{Url}" />
                             </t:template>
                     </t:Column>
+                    <t:Column>
+                        <Label text="{i18n>labelAction}" />
+                            <t:template>
+                                <Button icon="sap-icon://delete" press="onDelete" />
+                            </t:template>
+                    </t:Column>
                 </t:columns>
                 <t:noData>
                     

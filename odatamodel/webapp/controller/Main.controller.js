@@ -103,6 +103,29 @@ sap.ui.define([
                             }
                         }
                     );
+                },
+                onDelete: function(oEvent) {
+                    // oEvent의 getSource()는 이벤트가 발생한 오브젝트를 의미
+                    debugger;
+                    let oButton = oEvent.getSource(); // 특정 라인의 버튼
+                    let oContext = oButton.getBindingContext(); // 그 버튼에 연결된 Model 정보
+                    let path = oContext.getPath(); // Model 정보의 경로 (/CarrierSet('AA'))
+
+                    let oView = this.getView();
+                    let oModel = oView.getModel();
+
+                    // HTTP Method 에서 Delete 에 해당한느 명령
+                    oModel.remove(
+                        // 삭제할 데이터의 경로, 결과처리
+                        path, {
+                        success: function(){
+                            sap.m.MessageToast.show("항공사 삭제됨");
+                        },
+                        error: function(oError) {
+                            sap.m.MessageBox.error("삭제 중 오류가 발생함.")
+                        }
+                    })
                 }
+
         });
     });
