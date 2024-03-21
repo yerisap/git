@@ -1,7 +1,11 @@
 <mvc:View controllerName="sync.e08.odatamodlemultiupdate.controller.Main"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
-    xmlns:t="sap.ui.table">
+    xmlns:t="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    >
+    <!-- xmlns =>> xml 네임스페이스 -->
+
     <Page id="page" title="{i18n>title}">
         <content> 
             <t:Table 
@@ -39,7 +43,8 @@
                                     maxLength="20" 
                                     visible="{view>/EditMode}"
                                     width="20rem"/> <!--항공사명은 최대 20자리 -->
-                                <Text text="{Carrname}" />    
+                                <Text text="{Carrname}" 
+                                    visible="{=! ${view>/EditMode} }"/>    
                             </HBox>
                         </t:template>
                     </t:Column>
@@ -50,6 +55,34 @@
                             <Text text="{Carrname}" />
                         </t:template>
                     </t:Column> -->
+
+                    
+                    <t:Column>
+                        <Label text="{i18n>labelCurrcode}"/>         
+                        <t:template>
+                            <HBox
+                            >
+                                <ObjectAttribute text="{Currcode}" 
+                                    visible="{=! ${view>/EditMode} }"
+                                />
+                                    
+                                <ComboBox selectedKey="{Currcode}"
+                                        items="{/CurrcodeSet}"
+                                        visible="{view>/EditMode}">
+
+                                    <items>
+                                        <core:Item key="{Waers}" text="{Waers}({Ktext})" />
+                                        <!-- <core:Item key="KRW" text="KRW(원화)" />
+                                        <core:Item key="USD" text="USD(달러)" />
+                                        <core:Item key="CAD" text="CAD(캐나다)" />
+                                        <core:Item key="AUD" text="AUD(호주)" />
+                                        <core:Item key="EUR" text="EUR(유럽)" />
+                                        <core:Item key="GBP" text="GBP(영국)" /> -->
+                                    </items>
+                                </ComboBox>
+                            </HBox>
+                        </t:template>
+                    </t:Column>
 
                 </t:columns>
 
