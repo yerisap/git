@@ -1,7 +1,9 @@
 <mvc:View controllerName="sync.e08.odatamodel.controller.Main"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
-    xmlns:t="sap.ui.table">
+    xmlns:t="sap.ui.table"
+    xmlns:l="sap.ui.layout"
+    >
     <Page id="page" title="{i18n>title}">
         <footer>
             <OverflowToolbar >
@@ -14,6 +16,13 @@
                 visibleRowCount="10"
                 rows="{/CarrierSet}"
                 enableBusyIndicator="true" >
+
+                <t:extension>
+                    <Toolbar >
+                        <ToolbarSpacer />
+                        <Button text="새로고침" icon="sap-icon://refresh" press="onRefresh" />
+                    </Toolbar>
+                </t:extension>
                 
                 <t:columns>
                     <t:Column > 
@@ -49,7 +58,13 @@
                     <t:Column>
                         <Label text="{i18n>labelAction}" />
                             <t:template>
-                                <Button icon="sap-icon://delete" press="onDelete" />
+                                <!-- t:template 아래 버튼은 반드시 하나만 있어야 함 -->
+                                <l:HorizontalLayout>
+                                    <!-- <l:HorizontalLayout> 기능을 통해서 버튼을 하나로 묶어줌 -->
+                                        <!-- class로 디자인 -->
+                                    <Button icon="sap-icon://edit"   press="onUpdate" class="sapUiSmallMarginEnd" />
+                                    <Button icon="sap-icon://delete" press="onDelete" />
+                                </l:HorizontalLayout>
                             </t:template>
                     </t:Column>
                 </t:columns>
