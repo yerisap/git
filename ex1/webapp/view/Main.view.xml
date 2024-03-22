@@ -1,0 +1,54 @@
+<mvc:View controllerName="sync.e08.ex1.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    >
+    
+    <Page id="page" title="{i18n>title}">
+        <content>
+            
+            <Panel headerText="사칙연산 계산기 만들기" >
+                
+                <!-- 숫자 입력 -->
+                <f:SimpleForm layout="ResponsiveGridLayout" >
+                    <Title text="숫자 입력" level="H4" /> <!-- 숫자 입력 섹션 타이틀 -->
+                    <Label text="숫자1" />
+                    <Input id="idInput1" value="" type="Number" required="true"  />
+
+                    <Label text="숫자2" />
+                    <Input id="idInput2" value="" type="Number" required="true"  />
+                </f:SimpleForm>
+            </Panel>
+            
+            <Panel>
+                <!-- [결과 출력] -->
+                <f:SimpleForm layout="ResponsiveGridLayout" >
+                    <Title text="결과 출력" level="H4" /> <!-- 숫자 입력 섹션 타이틀 -->
+                    <Label text="덧셈" />
+                    <Text id="idText1" />
+                    <Button text="계산" press="onAdd" />
+
+                    <Label text="뺄셈" />
+                    <Text id="idText2" />
+                    <Button text="계산" press="onMinus" />
+
+                    <Label text="곱셈" />
+                    <Text id="idText3" />
+                    <Button text="계산" press="onMulti" />
+
+                    <Label text="나눗셈" />
+                    <Text id="idText4" />
+                    <Button text="계산" press="onDiv" />
+
+                </f:SimpleForm>
+
+            </Panel>
+
+
+
+
+        </content>
+    </Page>
+</mvc:View>

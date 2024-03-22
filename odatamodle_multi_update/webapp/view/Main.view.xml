@@ -49,6 +49,7 @@
                         </t:template>
                     </t:Column>
 
+                    <!-- 컬럼 자체를 숨기기 -->
                     <!-- <t:Column visible="{=! ${view>/EditMode} }">
                         <Label design="Bold" text="{i18n>labelCarrname}" />
                         <t:template >

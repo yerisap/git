@@ -1,0 +1,42 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+>
+
+    <Dialog id="idDialog" title="비행스케쥴 조회 E08" items="{toConnection}" >
+        <buttons>
+            <Button text="닫기" press="onClosePress" />
+        </buttons>
+        
+        <content>
+            <f:SimpleForm layout="ResponsiveGridLayout">
+                <Label text="항공사ID" /> <Text text="{Carrid}" />
+
+                <Label text="항공편No" /> <Text text="{Connid}" />
+
+                <Label text="출발지" /> <Text text="{Departure}" />
+
+                <Label text="도착지" /> <Text text="{Destination}" />
+                
+                <Label text="비행시간" /> <Text text="{FlightTime}" />
+
+                <Label text="출발시간" /> 
+                <TimePicker value="{Deptime}" displayFormat="HH:mm:ss"/>
+
+                <Label text="도착시간" /> 
+                <TimePicker value="{Arrtime}" displayFormat="HH:mm:ss"/>
+
+                <Label text="비행거리" /> 
+                <ObjectNumber 
+                    number="{Distance}"
+                    unit="{Distid}"/>
+
+                <Label text="비행기간" /> <Text text="{flightPeriod}" />
+                
+            </f:SimpleForm> 
+        </content>
+    </Dialog>
+
+
+</c:FragmentDefinition>

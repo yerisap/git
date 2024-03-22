@@ -1,0 +1,96 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+>
+
+<Dialog id="idNewDialog" title="항공편 정보 신규생성"
+        contentWidth="400px">
+        <content>
+            <f:SimpleForm layout="ResponsiveGridLayout"
+                labelSpanS="4" >
+                
+                <Title text="항공사 정보" />
+                <Label text="{i18n>labelCarrid}"/>
+                <Input value="{new>/Carrid}" 
+                    maxLength="3" 
+                    required="true" 
+                    >
+                    <layoutData>
+                        <l:GridData  span="S3" />
+                    </layoutData>
+                </Input>
+
+                <Label text="{i18n>labelConnid}"/>
+                <Input value="{new>/Connid}" required="true" />
+
+                    
+                <!-- <Title text="이동경로"  /> -->
+                <Label text="{i18n>labelCountryfr}"/>
+                <Input value="{new>/Countryfr}"  />
+
+                <Label text="{i18n>labelCityfrom}"/>
+                <Input value="{new>/Cityfrom}"  />
+
+                <Label text="{i18n>labelAirpfrom}" />
+                <Input value="{new>/Airpfrom}" required="true"  />
+                    
+                <Label text="{i18n>labelCountryto}"/>
+                <Input value="{new>/Countryto}"  />
+
+                <Label text="{i18n>labelCityto}"/>
+                <Input value="{new>/Cityto}"  />
+
+                <Label text="{i18n>labelAirpto}"/>
+                <Input value="{new>/Airpto}" required="true" />
+
+                <!-- <Title text="시간 및 거리"  /> -->
+                <Label text="{i18n>labelDeptime}" /> 
+                <Input  value="{
+                    path: 'new>/Deptime',
+                    type: 'sap.ui.model.odata.type.Time',
+                    formatOptions: {
+                        pattern:'HH:mm:ss'
+                    }    
+                }" />
+
+                <Label text="{i18n>labelArrtime}" /> 
+                <Input value="{
+                    path: 'new>/Arrtime',
+                    type: 'sap.ui.model.odata.type.Time',
+                    formatOptions: {
+                        pattern: 'HH:mm:ss'
+                    }
+                }" />
+
+                <Label text="{i18n>labelDistance}" /> 
+                <Input number="{new>/Distance}" />
+                <ComboBox 
+                    id="idComboBox"
+                    items="{view>/Distid}" 
+                    selectionChange="onDistidChange"
+                    selectedKey="{new>/Distid}"
+                    >
+                    <items>
+                        <c:Item key="{view>key}" text="{view>name} "/>
+                    </items>
+
+                    <layoutData>
+                        <l:GridData span="S3" />
+                    </layoutData>
+                </ComboBox>
+
+
+            </f:SimpleForm>
+        </content>
+        
+        <buttons>
+            <Button text="저장" press="onSaveConfirm" type="Accept" />
+            <Button text="취소" press="onSaveCancel"  type="Reject" />
+        </buttons>
+        
+    </Dialog>
+
+
+</c:FragmentDefinition>

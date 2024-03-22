@@ -1,0 +1,94 @@
+<mvc:View controllerName="sync.e08.ex2.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content >
+
+            <Table id="idTable" 
+                items="{
+                    path: '/FlightSet',
+                    parameters: {
+                        expand: 'toConnection'
+                    }
+                }"
+                mode="SingleSelectMaster"
+                selectionChange="onSelectionChange"
+            >
+
+                <columns>
+                    <Column>
+                        <Label text="{i18n>labelCarrid}" />
+                    </Column>         
+                    <Column>
+                        <Label text="{i18n>labelConnid}" />
+                    </Column>   
+                    <Column>
+                        <Label text="{i18n>labelFldate}" />
+                    </Column>   
+                    <Column>
+                        <Label text="{i18n>labelPrice}" />
+                    </Column>   
+                    <Column>
+                        <Label text="{i18n>labelPlanetype}" />
+                    </Column>   
+                    <Column>
+                        <Label text="{i18n>labelSeatsmax}" />
+                    </Column>   
+                    <Column>
+                        <Label text="{i18n>labelSeatsocc}" />
+                    </Column>   
+                    <Column>
+                        <Label text="{i18n>labelFreeSeats}" />
+                    </Column>   
+                    <Column>
+                        <Label text="{i18n>labelPaymentsum}" />
+                    </Column>   
+                </columns>
+
+                <items>
+                    <ColumnListItem >
+                        <cells>
+                            <ObjectIdentifier title="{Carrid}" />
+                            <ObjectIdentifier title="{Connid}" />
+                            <ObjectIdentifier  text="{
+                                path: 'Fldate',
+                                type: 'sap.ui.model.type.Date',
+                                formatOptions: {
+                                    pattern: 'yyyy-MM-dd'
+                                    }
+                                }"/>
+                            
+                            <ObjectNumber 
+                                number="{
+                                    parts:[{path:'Price'}, {path:'Currency'}],
+                                    type: 'sap.ui.model.type.Currency',
+                                    formatOptions: {
+                                        showMeasure: false
+                                    }
+                                }" 
+                                unit="{Currency}" />
+
+                            <Text text="{Planetype}" />
+                            <Text text="{Seatsmax}" />
+                            <Text text="{Seatsocc}" />
+                            <Text text="{= ${Seatsmax} - ${Seatsocc} }" />
+
+                            <ObjectNumber 
+                                number="{
+                                    parts:[{path:'Paymentsum'}, {path:'Currency'}],
+                                    type: 'sap.ui.model.type.Currency',
+                                    formatOptions: {
+                                        showMeasure: false
+                                    }
+                                }" 
+                                unit="{Currency}" />
+
+                        </cells>
+                    </ColumnListItem>
+                </items>
+
+            </Table>
+
+        </content>
+    </Page>
+</mvc:View>
