@@ -1,0 +1,77 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+>
+
+    <Dialog id="idDialog" 
+        icon="sap-icon://create"
+        title="항공편 정보 신규생성"
+    >
+        <content>
+            <f:SimpleForm 
+                layout="ResponsiveGridLayout"
+                labelSpanS="4"
+            >
+                <f:content>
+                    <!-- 항공사 정보 -->
+                    <c:Title text="{i18n>labelAirlineInfo}"/>
+                    <Label text="{i18n>laberlCarrid}"/>
+                    <Input value="{new>/Data/Carrid}" maxLength="3" width="3rem" />    
+                    
+                    <Label text="{i18n>laberlConnid}"/>
+                    <Input value="{
+                                path: 'new>/Data/Connid',
+                                type: 'sap.ui.model.type.Integer',
+                                constraints: {
+                                    minimum:1,
+                                    maximum: 9999
+                                }
+                            }" 
+                            maxLength="4" width="4rem" type="Number" />       
+        
+                    <!-- 이동경로 -->
+                    <c:Title text="{i18n>labelRoute}"/>
+                        <Label text="출발국가" />
+                        <Input value="{new>/Data/Countryfr}" maxLength="2" width="2rem" />
+                        
+                        <Label text="도착국가" />
+                        <Input value="{new>/Data/Countryto}" maxLength="2" width="2rem" />
+
+                    <!-- 시간 및 거리 -->
+                    <c:Title text="{i18n>labelTimeDistance}"/>
+                        <Label text="출발시간" />
+                        <TimePicker value="{
+                            path: 'new>/Data/Deptime',
+                            type: 'sap.ui.model.odata.type.Time'    
+                        }" />
+                        <TimePicker 
+                            value="{
+                                path: 'new>/Data/Deptime',
+                                type: 'sap.ui.model.odata.type.Time'    
+                            }" 
+                        />
+                    
+                    <Label text="도착시간" />
+                    <TimePicker 
+                        value="{new>/Data/Arrtime}"
+                        valueFormat="HH:mm:ss"
+                        />
+                    
+                    <Label text="거리단위" />
+                    <ComboBox value="{new>/Data/Distid}" 
+                        items="{new>/DistanceUnit}">
+                        <items>
+                            <c:Item key="{new>key}" text="{new>name}" />
+                        </items>
+
+                    </ComboBox>    
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <buttons>
+            <Button text="닫기" press="onClose" />
+        </buttons>
+    </Dialog>
+
+</c:FragmentDefinition>
