@@ -105,18 +105,29 @@ sap.ui.define([
                                     if (oAction == sap.m.MessageBox.Action.OK){
                                         // 진행
                                         sap.m.MessageBox.show("삭제를 진행합니다.");
+
+                                        let oModel = oView.getModel( );
     
                                         // LOOP AT aIndex INTO vIndex 라고 쓴 것과 같다.
                                         for (const vIndex of aIndex) {
                                             let oContext = oTable.getContextByIndex(vIndex);
                                             let path = oContext.getPath();
-                                            sap.m.MessageBox.show(path);
+                                            // sap.m.MessageBox.show(path);
+
+                                            // 경로: /ConnectionSet(Carrid:'AA', Connid='0017')
+                                            // 결과=> 항공편 aa, 0017 데이터를 찾아서 삭제한다.
+                                            // oModel.remove(경로, 결과처리)
+                                            oModel.remove(path, {}); // 이렇게만 적어도 삭제가 실제로 이루어진다.
+                                            
+                                            // 현재는 한 줄 선택에서만 삭제가 진행된다.
+                                            // 데이터 변경을 일으킬때는 한 번에 한 개만 변경이 가능하다.
+                                            // gateway 에서 여러 개 변경이 가능하도록 설정해줘야 한다.
+                                        
                                         }
-    
-                                        let oModel = oView.getModel( );
-                                        // 경로: /ConnectionSet(Carrid:'AA', Connid='0017')
-                                        // 결과=> 항공편 aa, 0017 데이터를 찾아서 삭제한다.
-                                        // oModel.remove(경로, 결과처리)
+
+                                        // 테이블의 전체 선택 해제
+                                        oTable.clearSelection();
+                                        
     
                                     } else {
                                         // 취소
