@@ -7,7 +7,8 @@
         <content>
             <Panel >
 
-                <t:Table 
+                <t:Table
+                    id="idTable"
                     rows="{/ConnectionSet}"
                 >
 
@@ -76,6 +77,13 @@
                 text="신규생성"
                 type="Accept"
                 press=".onCreate" />
+            <Button 
+                icon="sap-icon://delete" 
+                text="삭제"
+                type="Reject"
+                press="onDelete"
+                />
+
         </OverflowToolbar>
     </footer>
     </Page>
